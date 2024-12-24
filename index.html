@@ -1,0 +1,37 @@
+<!doctype html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<html lang="en">
+  <body>
+    <!--
+    Paste this script at the bottom of your HTML before the </body> tag.
+    See more style and config options on our docs
+    https://github.com/Mintplex-Labs/anything-llm/tree/master/embed/README.md
+    -->
+    <script>
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      
+      // Get all query params
+      const urlParams = new URLSearchParams(window.location.search);
+      
+      console.log('Query params:', urlParams);
+      // Pass the query params to the script
+      const script = document.createElement('script');
+      script.src = 'https://glorious-train-4jv7w5p5967q3jwrj-3000.app.github.dev/embed/anythingllm-chat-widget.min.js';
+      // Set attributes
+      script.setAttribute('data-base-api-url', '"https://glorious-train-4jv7w5p5967q3jwrj-3001.app.github.dev/api/embed');
+      script.async = true;
+      for (const [key, value] of urlParams) {
+        console.log('Setting data attribute:', key, value);
+        script.setAttribute(`data-${key}`, value);
+      }
+      // Append the script to the body
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>
